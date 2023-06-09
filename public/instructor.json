@@ -1,0 +1,91 @@
+[
+  {
+    "image": "https://images.unsplash.com/photo-1619961602105-16fa2a5465c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80",
+    "name": "John Smith",
+    "email": "johnsmith@example.com",
+    "numClassesTaken": 2,
+    "classesTaken": [
+      "Guitar Basics",
+      "Bass Guitar Techniques"
+    ]
+  },
+  {
+    "image": "https://images.unsplash.com/photo-1560184281-dc928c189fb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80",
+    "name": "Emily Johnson",
+    "email": "emilyjohnson@example.com",
+    "numClassesTaken": 1,
+    "classesTaken": [
+      "Piano Fundamentals"
+    ]
+  },
+  {
+    "image": "https://plus.unsplash.com/premium_photo-1682855223543-2427fec5ec3d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80",
+    "name": "Michael Davis",
+    "email": "michaeldavis@example.com",
+    "numClassesTaken": 3,
+    "classesTaken": [
+      "Drumming 101",
+      "Guitar Basics",
+      "Flute Mastery"
+    ]
+  },
+  {
+    "image": "https://images.unsplash.com/photo-1618673747378-7e0d3561371a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=327&q=80",
+    "name": "Sarah Thompson",
+    "email": "sarahthompson@example.com",
+    "numClassesTaken": 1,
+    "classesTaken": [
+      "Bass Guitar Techniques"
+    ]
+  },
+  {
+    "image": "https://images.unsplash.com/photo-1484972759836-b93f9ef2b293?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+    "name": "Daniel Lee",
+    "email": "daniellee@example.com",
+    "numClassesTaken": 2,
+    "classesTaken": [
+      "Violin Mastery",
+      "Saxophone Express"
+    ]
+  },
+  {
+    "image": "https://plus.unsplash.com/premium_photo-1682391039315-b0cdb52e4216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80",
+    "name": "Michelle Anderson",
+    "email": "michelleanderson@example.com",
+    "numClassesTaken": 3,
+    "classesTaken": [
+      "Saxophone Express",
+      "Trumpet Techniques",
+      "Keyboard Essentials"
+    ]
+  },
+  {
+    "image": "https://images.unsplash.com/photo-1501492765677-f07c5f3d87db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=876&q=80",
+    "name": "Robert Johnson",
+    "email": "robertjohnson@example.com",
+    "numClassesTaken": 2,
+    "classesTaken": [
+      "Trumpet Techniques",
+      "Guitar Basics"
+    ]
+  },
+  {
+    "image": "https://images.unsplash.com/photo-1529137258739-514294bd07f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=327&q=80",
+    "name": "Sophia Martinez",
+    "email": "sophiamartinez@example.com",
+    "numClassesTaken": 1,
+    "classesTaken": [
+      "Ukulele for Beginners"
+    ]
+  },
+  {
+    "image": "https://images.unsplash.com/photo-1582563138430-437550fbfc92?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=871&q=80",
+    "name": "David Brown",
+    "email": "davidbrown@example.com",
+    "numClassesTaken": 2,
+    "classesTaken": [
+      "Keyboard Essentials",
+      "Piano Fundamentals"
+    ]
+  }
+]

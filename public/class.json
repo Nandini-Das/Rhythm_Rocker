@@ -1,0 +1,82 @@
+[
+  {
+    "image": "https://images.unsplash.com/photo-1550291652-6ea9114a47b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80",
+    "name": "Guitar Basics",
+    "instructor": "John Smith",
+    "availableSeats": 10,
+    "price": 50,
+    "students": 8
+  },
+  {
+    "image": "https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+    "name": "Piano Fundamentals",
+    "instructor": "Emily Johnson",
+    "availableSeats": 8,
+    "price": 60,
+    "students": 12
+  },
+  {
+    "image": "https://images.unsplash.com/photo-1524230659092-07f99a75c013?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+    "name": "Drumming 101",
+    "instructor": "Michael Davis",
+    "availableSeats": 12,
+    "price": 55,
+    "students": 5
+  },
+  {
+    "image": "https://plus.unsplash.com/premium_photo-1664194584355-25196f114804?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80",
+    "name": "Bass Guitar Techniques",
+    "instructor": "Sarah Thompson",
+    "availableSeats": 6,
+    "price": 65,
+    "students": 10
+  },
+  {
+    "image": "https://images.unsplash.com/photo-1624367171718-14026220ee35?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80",
+    "name": "Violin Mastery",
+    "instructor": "Daniel Lee",
+    "availableSeats": 4,
+    "price": 70,
+    "students": 3
+  },
+  {
+    "image": "https://images.unsplash.com/photo-1629907451365-6731862a0d32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80",
+    "name": "Saxophone Express",
+    "instructor": "Michelle Anderson",
+    "availableSeats": 5,
+    "price": 75,
+    "students": 7
+  },
+  {
+    "image": "https://images.unsplash.com/photo-1511192336575-5a79af67a629?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80",
+    "name": "Trumpet Techniques",
+    "instructor": "Robert Johnson",
+    "availableSeats": 7,
+    "price": 60,
+    "students": 2
+  },
+  {
+    "image": "https://images.unsplash.com/photo-1594384115313-ff3436ba24bb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=435&q=80",
+    "name": "Ukulele for Beginners",
+    "instructor": "Sophia Martinez",
+    "availableSeats": 9,
+    "price": 45,
+    "students": 6
+  },
+  {
+    "image": "https://plus.unsplash.com/premium_photo-1664194583957-a23dfea9c2e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80",
+    "name": "Keyboard Essentials",
+    "instructor": "David Brown",
+    "availableSeats": 8,
+    "price": 55,
+    "students": 14
+  },
+  {
+    "image": "https://images.unsplash.com/photo-1567184406952-9f6ba54cb614?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+    "name": "Flute Mastery",
+    "instructor": "Olivia Davis",
+    "availableSeats": 6,
+    "price": 70,
+    "students": 10
+  }
+]
