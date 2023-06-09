@@ -12,7 +12,7 @@ const Dashboard = () => {
           <ul className="flex flex-col mt-4">
             <li>
               <NavLink
-                to="/dashboard"
+                to="/"
                 className="flex items-center px-4 py-2 text-gray-700"
                 activeClassName="bg-gray-200 font-bold"
                 exact

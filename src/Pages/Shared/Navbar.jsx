@@ -23,9 +23,9 @@ const Navbar = () => {
     <li><Link to="/classes">Classes</Link></li>
     <li>
             <Link to="/dashboard/myCart">
-                <button className="btn btn-info my-auto">
+                <button className="relative my-auto mt-2">
                     <FaShoppingCart></FaShoppingCart>
-                    <div className="badge badge-secondary">+{cart?.length || 0}</div>
+                    <div className="badge badge-secondary absolute -top-4 -right-8">+{cart?.length || 0}</div>
                 </button>
             </Link>
         </li>
@@ -60,7 +60,7 @@ const Navbar = () => {
                 alt="Profile"
                 title={user.displayName}>
                 </img>
-                <><Link to="/">Dashboard</Link></>
+                <><Link to="/dashboard">Dashboard</Link></>
 
                 <button onClick={handleLogOut} className="btn btn-ghost">LogOut</button>
             </> : <>

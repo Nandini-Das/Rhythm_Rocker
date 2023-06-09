@@ -4,7 +4,7 @@ import useCart from "../../../hooks/useCart";
 
 
 const MyCart = () => {
-  const [cart] = useCart();
+  const [cart, refetch] = useCart();
   
   const total = cart.reduce((sum, item) => item.price + sum, 0);
 
@@ -77,7 +77,7 @@ const MyCart = () => {
                                 </td>
                                 <td className="">${item.price}</td>
                                 <td>
-                                    <button className="btn btn-ghost bg-red-600  text-white"><FaTrashAlt></FaTrashAlt></button>
+                                    <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600  text-white"><FaTrashAlt></FaTrashAlt></button>
                                 </td>
                             </tr>)
                         }
