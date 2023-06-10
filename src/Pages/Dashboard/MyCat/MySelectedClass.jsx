@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 import useCart from "../../../hooks/useCart";
 
 
-const MyCart = () => {
+const MySelectedClass = () => {
   const [cart, refetch] = useCart();
   
   const total = cart.reduce((sum, item) => item.price + sum, 0);
@@ -40,10 +40,9 @@ const MyCart = () => {
   return (
     <div className="w-full">
         
-            <div className="uppercase font-semibold h-[60px]  justify-evenly items-center">
-                <h3 className="text-3xl">Total Items: {cart.length}</h3>
-                <h3 className="text-3xl">Total Price: ${total}</h3>
-                <button className="btn btn-success btn-sm float-end">PAY</button>
+            <div className="">
+           
+               
             </div>
             <div className="overflow-x-auto w-full mt-6 pt-6">
                 <table className="table w-full">
@@ -55,6 +54,7 @@ const MyCart = () => {
                             <th>Class Name</th>
                             <th>Price</th>
                             <th>Action</th>
+                            <th>Payment</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -79,6 +79,9 @@ const MyCart = () => {
                                 <td>
                                     <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600  text-white"><FaTrashAlt></FaTrashAlt></button>
                                 </td>
+                                <td>
+                                    <button className="btn btn-success btn-sm float-end">PAY</button>
+                                </td>
                             </tr>)
                         }
 
@@ -91,4 +94,4 @@ const MyCart = () => {
   );
 };
 
-export default MyCart;
+export default MySelectedClass;

@@ -78,7 +78,7 @@ const Courses = ({ courseItem }) => {
                             disabled={ courseItem.availableSeats === 0}
                             onClick={() => handleSelectClass(name, availableSeats)}
                         >
-                            ENROLL
+                            Select Class
                         </button>
                     </Link>
                 </li>
