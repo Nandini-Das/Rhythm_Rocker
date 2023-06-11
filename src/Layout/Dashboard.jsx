@@ -9,10 +9,13 @@ import {
   FaUsers,
 } from 'react-icons/fa';
 import useAdmin from '../hooks/useAdmin';
+import useInstructor from '../hooks/useInstructor';
+import useStudent from '../hooks/useStudent';
 
 const Dashboard = () => {
     const [isAdmin] = useAdmin();
-
+    const [isInstructor] = useInstructor();
+    const [isStudent] = useStudent();
   return (
     <div className="flex h-screen">
       {/* Sidebar */}
@@ -21,18 +24,33 @@ const Dashboard = () => {
           <h1 className="text-xl font-bold">Dashboard</h1>
         </div>
         <ul className="menu w-50">
-          {isAdmin ? (
+          {isInstructor ? (
+            <>
+              <li>
+                <NavLink to="/dashboard/home">
+                  <FaHome></FaHome> Instructor Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/addClasses">
+                  <FaBook></FaBook> Add Classes
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/myAddedClasses">
+                  <FaBook></FaBook> My Added Classes
+                </NavLink>
+              </li>
+              
+            </>
+          ) :isAdmin ? (
             <>
               <li>
                 <NavLink to="/dashboard/home">
                   <FaHome></FaHome> Admin Home
                 </NavLink>
               </li>
-              <li>
-                <NavLink to="/dashboard/addItem">
-                  <FaBook></FaBook> Add Classes
-                </NavLink>
-              </li>
+              
               <li>
                 <NavLink to="/dashboard/history">
                   <FaWallet></FaWallet> Manage Classes
@@ -44,11 +62,12 @@ const Dashboard = () => {
                 </NavLink>
               </li>
             </>
-          ) : (
+          ) 
+          :  isStudent ?   (
             <>
               <li>
                 <NavLink to="/dashboard/home">
-                  <FaHome></FaHome> User Home
+                  <FaHome></FaHome> Student Home
                 </NavLink>
               </li>
               <li>
@@ -63,12 +82,19 @@ const Dashboard = () => {
               </li>
               <li>
                 <NavLink to="/dashboard/mycart">
-                  <FaShoppingCart></FaShoppingCart> My Cart
+                  <FaShoppingCart></FaShoppingCart> My Selected Classes
                   
                 </NavLink>
               </li>
             </>
-          )}
+          ) : <>
+          <li>
+          <NavLink to="/dashboard/mycart">
+                  <FaShoppingCart></FaShoppingCart> My Selected Classes
+                  
+                </NavLink>
+          </li>
+          </>}
 
           <div className="divider"></div>
           <li>

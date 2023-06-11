@@ -1,54 +1,69 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { FaTrashAlt, FaUserShield } from 'react-icons/fa';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { FaTrashAlt} from 'react-icons/fa';
+import  'react-toastify/dist/ReactToastify.css';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const AllUsers = () => {
     const [axiosSecure] = useAxiosSecure();
+
     const { data: users = [], refetch } = useQuery(['users'], async () => {
         const res = await axiosSecure.get('/users')
         return res.data;
   });
 
   const handleMakeAdmin = (user) => {
-    const role = user.role === "admin" 
-    fetch(`http://localhost:5000/users/admin/${user._id}`, {
-      method: "PATCH",
-      body: JSON.stringify({ role }), // Include the role in the request body
+    const role = 'admin';
+    disabled = true; // Disable the button
+
+    fetch(`http://localhost:5000/users/admin${user._id}`, {
+      method: 'PATCH',
+      body: JSON.stringify({ role }),
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.modifiedCount) {
+        if (data.success) {
           refetch();
-          toast.success(`${user.name} is now a admin`)
-        }
-      });
-  };
-  
-  const handleMakeInstructor = (user) => {
-    const role = user.role === "instructor" 
-    fetch(`http://localhost:5000/users/admin/${user._id}`, {
-      method: "PATCH",
-      body: JSON.stringify({ role }), // Include the role in the request body
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.modifiedCount) {
-          refetch();
-          toast.success(`${user.name} is now a ${role.charAt(0).toUpperCase() + role.slice(1)}!`);
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: `${user.name} is now an Admin!`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
       });
   };
 
+  const handleMakeInstructor = (user) => {
+    const role = 'instructor';
+    disabled = true; // Disable the button
+
+    fetch(`http://localhost:5000/users/instructor${user._id}`, {
+      method: 'PATCH',
+      body: JSON.stringify({ role }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          refetch();
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: `${user.name} is now an Instructor!`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
   const handleDelete = (user) => {
     Swal.fire({
       title: 'Are you sure to delete?',
@@ -75,7 +90,6 @@ const AllUsers = () => {
 
   return (
     <div className="w-full">
-      <ToastContainer />
       <h3 className="text-3xl font-semibold my-4">Total Users: {users.length}</h3>
       <div className="overflow-x-auto">
         <table className="table table-zebra w-full">
@@ -94,30 +108,31 @@ const AllUsers = () => {
                 <th>{index + 1}</th>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
+                <td>{user.role}</td>
                 <td>
-                  {user.role === 'admin' ? (
-                    'admin'
-                  ) : (
+                  {user.role === 'admin' ? 
                     <>
                       <button
                         onClick={() => handleMakeAdmin(user)}
-                        className="btn btn-ghost bg-orange-600  text-white"
+                     
+                        className="btn btn-ghost bg-orange-600 text-white"
                       >
-                        make admin
+                        Make Admin
                       </button>
                       <button
                         onClick={() => handleMakeInstructor(user)}
-                        className="btn btn-ghost bg-orange-600  text-white"
+                    
+                        className="btn btn-ghost bg-orange-600 text-white"
                       >
-                        make instructor
+                        Make Instructor
                       </button>
                     </>
-                  )}
+                  : " "}
                 </td>
                 <td>
                   <button
                     onClick={() => handleDelete(user)}
-                    className="btn btn-ghost bg-red-600  text-white"
+                    className="btn btn-ghost bg-red-600 text-white"
                   >
                     <FaTrashAlt />
                   </button>

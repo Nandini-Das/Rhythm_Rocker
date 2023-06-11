@@ -18,6 +18,10 @@ import MySelectedClass from "../Pages/Dashboard/MyCat/MySelectedClass";
 import AllUsers from "../Pages/Dashboard/AllUsers";
 import AdminRoute from "./AdminRoute";
 import AddClasses from "../Pages/Dashboard/AddClasses";
+import InstructorRoute from "./InstructorRoute";
+import MyAddedClasses from "../Pages/Dashboard/MyAddedClasses";
+import UpdateClass from "../Pages/Dashboard/UpdateClass";
+import Payment from "../Pages/Dashboard/Payment";
 
 
 
@@ -71,9 +75,24 @@ export const router = createBrowserRouter([
     
         },
         {
-          path: 'addItem',
-          element: <AdminRoute><AddClasses></AddClasses></AdminRoute>,
+          path: "payment",
+          element:<Payment></Payment>
+    
+        },
+        {
+          path: 'addClasses',
+          element: <InstructorRoute><AddClasses></AddClasses></InstructorRoute>,
+        }, 
+        {
+          path: 'myAddedClasses',
+          element: <InstructorRoute><MyAddedClasses></MyAddedClasses></InstructorRoute>,
+        },
+        {
+          path: 'updateClass/:id',
+          element: <InstructorRoute><UpdateClass></UpdateClass></InstructorRoute>,
+          loader: ({params}) => fetch(`/http://localhost:5173/dashboard/classes/${params.id}`),
         }
+      
       
       ]
 
