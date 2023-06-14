@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Carousel } from 'react-responsive-carousel';
+
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import PopularInstructor from '../PopularInstructor';
 import PoplarClasses from '../PoplarClasses';
 import "./buttonClassName.css"
 import TestimonialSection from './TestimonialSection';
+import 'react-accessible-accordion/dist/fancy-example.css';
 
 const Home = () => {
   const [theme, setTheme] = useState("light");
@@ -54,6 +55,7 @@ const Home = () => {
 </div>
 <PopularInstructor></PopularInstructor>
 <PoplarClasses></PoplarClasses>
+<TestimonialSection></TestimonialSection>
 {/* todo-extra section */}
 
 
