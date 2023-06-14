@@ -54,6 +54,7 @@ const Home = () => {
 </div>
 <PopularInstructor></PopularInstructor>
 <PoplarClasses></PoplarClasses>
+{/* todo-extra section */}
 
 
  </div>

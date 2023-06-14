@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
+import useCart from "../../../hooks/useCart";
 
 
 
@@ -10,6 +11,7 @@ const CheckoutForm = ({ name, price }) => {
     const stripe = useStripe();
     const elements = useElements();
     const { user } = useAuth();
+    const [cart, refetch] = useCart();
     const [axiosSecure] = useAxiosSecure()
     const [cardError, setCardError] = useState('');
     const [clientSecret, setClientSecret] = useState('');
@@ -25,7 +27,7 @@ const CheckoutForm = ({ name, price }) => {
                 })
         }
     }, [price])
-
+     
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -89,10 +91,14 @@ const CheckoutForm = ({ name, price }) => {
             axiosSecure.post('/payment', payment)
                 .then(res => {
                     console.log(res.data);
-                    // if (res.data.result.insertedId) {
-                    //     // display confirm
-                    // }
+                    
                 })
+                axiosSecure.delete(`/cart/${id}`, { data: cart })
+                .then(res => {
+                  console.log(res.data);
+                  refetch(); 
+                })
+
         }
 
 

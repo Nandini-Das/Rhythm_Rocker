@@ -1,9 +1,9 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import useAuth from '../../hooks/useAuth';
+
 import useAxiosSecure from '../../hooks/useAxiosSecure';
-import axios from 'axios';
 import Swal from 'sweetalert2';
+import useAuth from '../../hooks/useAuth';
 
 const AddClasses = () => {
   const { user } = useAuth();
@@ -14,18 +14,16 @@ const AddClasses = () => {
 
   const onSubmit = async (data) => {
     try {
-      const formData = new FormData();
-    
-
-      
       const newItem = {
         class_name: data.class_name,
-        class_image: data.image,
+        class_image: data.class_image,
         available_seats: data.available_seats,
+        enrolled_students: data.enrolled_students,
         instructor_name: name,
         email: email,
         price: parseFloat(data.price),
         status: 'pending',
+        feedback: 'no feedback',
       };
 
       const result = await axiosSecure.post('/classes', newItem);
@@ -41,14 +39,13 @@ const AddClasses = () => {
       }
     } catch (error) {
       console.error('Error adding class', error);
-   
     }
   };
 
   return (
     <div className="w-full px-10">
       <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="form-control w-full max-w-xs">
+        <div className="form-control w-full max-w-xs">
           <label className="label">
             <span className="label-text font-semibold">Class Name</span>
           </label>
@@ -62,12 +59,12 @@ const AddClasses = () => {
         </div>
         <div className="form-control w-full max-w-xs">
           <label className="label">
-            <span className="label-text font-semibold">Class Image</span>
+            <span className="label-text font-semibold">Class Image URL</span>
           </label>
           <input
             type="text"
             placeholder="Class Image URL"
-            {...register("class_image", { required: true, maxLength: 1000 })}
+            {...register("class_image", { required: true })}
             className="input input-bordered w-full max-w-xs"
           />
           {errors.class_image && <span className="text-red-500">This field is required</span>}
@@ -84,7 +81,7 @@ const AddClasses = () => {
             {...register("instructor_name", { required: true, maxLength: 120 })}
             className="input input-bordered w-full max-w-xs"
           />
-          {errors.your_name && <span className="text-red-500">This field is required</span>}
+          {errors.instructor_name && <span className="text-red-500">This field is required</span>}
         </div>
         <div className="form-control w-full max-w-xs">
           <label className="label">
@@ -98,7 +95,7 @@ const AddClasses = () => {
             {...register("email", { required: true, maxLength: 120 })}
             className="input input-bordered w-full max-w-xs"
           />
-          {errors.your_email && <span className="text-red-500">This field is required</span>}
+          {errors.email && <span className="text-red-500">This field is required</span>}
         </div>
         <div className="form-control w-full max-w-xs">
           <label className="label">
@@ -111,6 +108,18 @@ const AddClasses = () => {
             className="input input-bordered w-full max-w-xs"
           />
           {errors.available_seats && <span className="text-red-500">This field is required</span>}
+        </div>
+        <div className="form-control w-full max-w-xs">
+          <label className="label">
+            <span className="label-text font-semibold">Enrolled Students</span>
+          </label>
+          <input
+            type="number"
+            {...register("enrolled_students", { required: true })}
+            placeholder="Enrolled Students"
+            className="input input-bordered w-full max-w-xs"
+          />
+          {errors.enrolled_students && <span className="text-red-500">This field is required</span>}
         </div>
         <div className="form-control w-full max-w-xs">
           <label className="label">

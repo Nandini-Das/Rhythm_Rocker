@@ -7,6 +7,8 @@ import {
   FaHome,
   FaBook,
   FaUsers,
+  FaBookOpen,
+  FaUserGraduate
 } from 'react-icons/fa';
 import useAdmin from '../hooks/useAdmin';
 import useInstructor from '../hooks/useInstructor';
@@ -52,7 +54,7 @@ const Dashboard = () => {
               </li>
               
               <li>
-                <NavLink to="/dashboard/history">
+                <NavLink to="/dashboard/manageClasses">
                   <FaWallet></FaWallet> Manage Classes
                 </NavLink>
               </li>
@@ -71,12 +73,12 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/reservations">
-                  <FaCalendarAlt></FaCalendarAlt> Reservations
+                <NavLink to="/dashboard/myEnrolledClasses">
+                  <FaCalendarAlt></FaCalendarAlt> My Enrolled Classes
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/history">
+                <NavLink to="/dashboard/myPayment">
                   <FaWallet></FaWallet> Payment History
                 </NavLink>
               </li>
@@ -103,10 +105,10 @@ const Dashboard = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/menu">Our Menu</NavLink>
+          <NavLink to="/classes"><FaBookOpen></FaBookOpen>Our Classes</NavLink>
           </li>
           <li>
-            <NavLink to="/order/salad">Order Food</NavLink>
+            <NavLink to="/Instructors"><FaUserGraduate></FaUserGraduate>Our Instructors</NavLink>
           </li>
         </ul>
       </div>

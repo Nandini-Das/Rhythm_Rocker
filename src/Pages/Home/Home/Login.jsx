@@ -77,9 +77,12 @@ const Login = () => {
           .then(res => res.json())
           .then(data => {
               if (data.insertedId) {
-                  navigate(from, { replace: true });
+                
+             
               }
+              navigate(from, { replace: true });
           })
+
 
 
 

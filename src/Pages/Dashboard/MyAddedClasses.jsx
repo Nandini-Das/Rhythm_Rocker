@@ -46,7 +46,7 @@ const MyAddedClasses = () => {
             {classes.map((item, index) => (
               <tr key={item._id}>
                 <td>{index + 1}</td>
-                <td>"0"</td>
+                <td>{item.enrolled_students}</td>
                 <td>{item.status}</td>
                 <td className="">${item.price}</td>
                 <td className="">{"FeedBAck"}</td>

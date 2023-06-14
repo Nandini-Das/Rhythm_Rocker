@@ -5,15 +5,17 @@ import 'react-toastify/dist/ReactToastify.css';
 import Swal from 'sweetalert2';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useCart from '../../hooks/useCart';
+import useAdmin from '../../hooks/useAdmin';
+import useInstructor from '../../hooks/useInstructor';
 
 const Courses = ({ courseItem }) => {
     const { user } = useContext(AuthContext);
     const [, refetch] = useCart();
-    const { name, image, price, _id, availableSeats, instructor } =  courseItem;
+    const { name, image, price, _id, available_seats, instructor } = courseItem;
     const navigate = useNavigate();
     const location = useLocation();
-
-    console.log(courseItem);
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
 
     const handleSelectClass = (className, availableSeats) => {
         if (user && user.email) {
@@ -34,7 +36,7 @@ const Courses = ({ courseItem }) => {
                 .then((res) => res.json())
                 .then((data) => {
                     if (data.insertedId) {
-                        refetch(); 
+                        refetch();
                         toast.success(`Selected class: ${className}`);
                     }
                 });
@@ -55,37 +57,30 @@ const Courses = ({ courseItem }) => {
             return;
         }
 
-        if (availableSeats === 0) {
-            toast.error('This class is currently full. Please select another class.');
-            return;
-        }
+        
     };
 
     return (
         <div className="container mx-auto my-2">
-            
-            <ToastContainer /> {/* Add the ToastContainer component */}
-            
-                <li className={`flex flex-col items-center justify-center p-4 border rounded-lg ${availableSeats === 0 ? 'bg-red-200' : ''}`}>
-                    <img src={image} alt={name} className="w-48 h-48 object-cover rounded-lg mb-4" />
-                    <h2 className="text-xl font-bold mb-2">{name}</h2>
-                    <p className="text-gray-500">Instructor: {instructor}</p>
-                    <p className="text-gray-500">Available Seats: {availableSeats}</p>
-                    <p className="text-gray-500">Price: {price}</p>
-                    <Link>
-                        <button
-                            className="btn btn-primary mt-4"
-                            disabled={ courseItem.availableSeats === 0}
-                            onClick={() => handleSelectClass(name, availableSeats)}
-                        >
-                            Select Class
-                        </button>
-                    </Link>
-                </li>
-           
+            <ToastContainer />
+            <li className={`flex flex-col items-center justify-center p-4 border rounded-lg ${available_seats === 0 && (isAdmin || isInstructor) ? 'bg-red-200' : ''}`}>
+                <img src={image} alt={name} className="w-48 h-48 object-cover rounded-lg mb-4" />
+                <h2 className="text-xl font-bold mb-2">{name}</h2>
+                <p className="text-gray-500">Instructor: {instructor}</p>
+                <p className="text-gray-500">Available Seats: {isAdmin || isInstructor ? available_seats : ''}</p>
+                <p className="text-gray-500">Price: {price}</p>
+                <Link>
+                    <button
+                        className={`btn btn-primary mt-4 ${available_seats === 0 && !(isAdmin || isInstructor) ? 'disabled' : ''}`}
+                        disabled={available_seats === 0 && !(isAdmin || isInstructor)}
+                        onClick={() => handleSelectClass(name, available_seats)}
+                    >
+                        Select Class
+                    </button>
+                </Link>
+            </li>
         </div>
     );
 };
 
 export default Courses;
-
