@@ -1,6 +1,5 @@
 import React from 'react';
-import { Accordion, AccordionItem } from 'react-accessible-accordion';
-import 'react-accessible-accordion/dist/fancy-example.css';
+import Marquee from 'react-fast-marquee';
 
 const TestimonialSection = () => {
   const testimonials = [
@@ -10,7 +9,7 @@ const TestimonialSection = () => {
       instrument: 'Guitar',
       content:
         "Learning guitar has been an amazing experience with your platform. The lessons are well-structured, and the instructors are knowledgeable. I've made great progress and can now play my favorite songs!",
-      image: 'https://example.com/john-doe.jpg',
+      image: 'https://plus.unsplash.com/premium_photo-1681396936891-ed738c53cb21?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=388&q=80',
     },
     {
       id: 2,
@@ -18,7 +17,7 @@ const TestimonialSection = () => {
       instrument: 'Piano',
       content:
         'I always dreamt of playing the piano, and thanks to your website, it has become a reality. The lessons are engaging, and the instructors make complex techniques easy to understand. Highly recommended!',
-      image: 'https://example.com/jane-smith.jpg',
+      image: 'https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=399&q=80',
     },
     {
       id: 3,
@@ -26,16 +25,16 @@ const TestimonialSection = () => {
       instrument: 'Drums',
       content:
         'Learning drums with your platform has been a blast! The interactive lessons and practice exercises have helped me improve my skills. The instructors are passionate and provide valuable feedback. I feel like a rockstar!',
-      image: 'https://example.com/mark-johnson.jpg',
+      image: 'https://plus.unsplash.com/premium_photo-1681682668796-41f3d6f06996?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80',
     },
-    // Additional testimonials
+  
     {
       id: 4,
       name: 'Emily Davis',
       instrument: 'Violin',
       content:
         'Your platform has made learning the violin a joyful journey. The step-by-step lessons and helpful tips have boosted my confidence. I can now play beautiful melodies!',
-      image: 'https://example.com/emily-davis.jpg',
+      image: 'https://images.unsplash.com/photo-1465821185615-20b3c2fbf41b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=998&q=80',
     },
     {
       id: 5,
@@ -43,7 +42,7 @@ const TestimonialSection = () => {
       instrument: 'Saxophone',
       content:
         "I'm grateful for your platform and its comprehensive saxophone lessons. The video tutorials and exercises have been invaluable in my learning process. Thank you for helping me become a better musician!",
-      image: 'https://example.com/michael-lee.jpg',
+      image: 'https://images.unsplash.com/photo-1471565661762-b9dfae862dbe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
     },
     {
       id: 6,
@@ -51,34 +50,29 @@ const TestimonialSection = () => {
       instrument: 'Flute',
       content:
         "I've thoroughly enjoyed learning the flute through your website. The interactive lessons and clear explanations have made it easy for me to progress. I'm excited to continue my musical journey!",
-      image: 'https://example.com/sarah-thompson.jpg',
+      image: 'https://images.unsplash.com/photo-1666705752155-b32e282bc50c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80',
     },
+
   ];
 
   return (
     <section className="bg-gray-100 py-16">
       <div className="max-w-4xl mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-8">Testimonials</h2>
-        <Accordion>
+        <Marquee gradient={false} speed={30}>
           {testimonials.map((testimonial) => (
-            <AccordionItem key={testimonial.id} title={testimonial.name}>
-              <div className="p-4">
-                <div className="flex items-center mb-4">
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="w-10 h-10 rounded-full mr-4"
-                  />
-                  <div>
-                    <h3 className="text-lg font-medium">{testimonial.name}</h3>
-                    <p className="text-gray-500">{testimonial.instrument}</p>
-                  </div>
-                </div>
-                <p className="text-lg">{testimonial.content}</p>
-              </div>
-            </AccordionItem>
+            <div className="card shadow-lg w-72 h-96 mx-4 my-4 p-6 rounded-lg" key={testimonial.id}>
+              <img
+                src={testimonial.image}
+                alt={testimonial.name}
+                className="w-16 h-16 rounded-full mx-auto mb-4"
+              />
+              <h3 className="text-xl font-medium mb-2">{testimonial.name}</h3>
+              <p className="text-gray-500 mb-4">{testimonial.instrument}</p>
+              <p className="text-gray-700">{testimonial.content}</p>
+            </div>
           ))}
-        </Accordion>
+        </Marquee>
       </div>
     </section>
   );
