@@ -52,8 +52,9 @@ const Register = () => {
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content">
                 <div className="container mx-auto p-3">
-                    <h1 className="text-5xl font-bold mt-5 pt-5">Sign up now!</h1>
-                    <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                    <h1 className="text-5xl font-bold mt-5 pt-5 text-center">Register now!</h1>
+                    <p className= " bg-transparent py-6 text-2xl text-violet-700 italic">“Music gives a soul to the universe, wings to the mind, flight to the imagination, and life to everything.” – Plato  </p>
+                  
                     <div className="card shadow-2xl bg-base-100">
                         <div className="card-body">
                             <form onSubmit={handleSubmit(onSubmit)}>
@@ -133,10 +134,10 @@ const Register = () => {
                                     </div>
                                 </div>
                                 <div className="form-control mt-6">
-                                    <input className="btn btn-primary" type="submit" value={isSubmitting ? 'Signing Up...' : 'Sign Up'} disabled={isSubmitting} />
+                                    <input className="btn btn-primary" type="submit" value={isSubmitting ? 'Signing Up...' : ' Register'} disabled={isSubmitting} />
                                 </div>
                             </form>
-                            <p className="mt-4 text-center"><small>Already have an account? <Link to="/login">Login</Link></small></p>
+                            <p className="mt-4 text-center"><small>Already have an account? <Link className='underline underline-offset-2 text-primary' to="/login">Login</Link></small></p>
                         </div>
                     </div>
                 </div>

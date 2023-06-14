@@ -68,41 +68,51 @@ const Login = () => {
       console.log(loggedInUser);
       const saveUser = { name: loggedInUser.displayName, email: loggedInUser.email }
       fetch('http://localhost:5000/users', {
-          method: 'POST',
-          headers: {
-              'content-type': 'application/json'
-          },
-          body: JSON.stringify(saveUser)
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(saveUser)
       })
-          .then(res => res.json())
-          .then(data => {
-              if (data.insertedId) {
-                
-             
-              }
-              navigate(from, { replace: true });
-          })
+        .then(res => res.json())
+        .then(data => {
+          if (data.insertedId) {
+
+
+          }
+          navigate(from, { replace: true });
+        })
 
 
 
 
-  })
-}
-  
+    })
+  }
+
 
   return (
     <>
-      <div className="hero min-h-screen bg-base-200">
+     
+      <div className="hero min-h-screen bg-base-200 p-3">
+
         <div className="hero-content flex-col md:flex-row-reverse">
-          <div className="text-center md:w-1/2 lg:text-left">
-            <h1 className="text-5xl font-bold">Login now!</h1>
-            <p className="py-6">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-              a id nisi.
-            </p>
+
+          <div className="text-center ">
+          <div className="text-orange-500 text-xl font-semibold p-4 italic">
+      "Music is the universal language of mankind" <p className='ms-6 ps-6'>- Henry Wadsworth Longfellow</p>
+    </div>
+            <img
+              src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+              alt=""
+              srcSet=""
+              style={{ opacity: 0.8 }}
+              className='w-100 h-2/3 rounded'
+            />
+           
           </div>
+          
           <div className="card md:w-1/2 max-w-sm shadow-2xl bg-base-100">
+          <h1 className="text-5xl font-bold p-3 text-center">Login now!</h1>
             <form onSubmit={handleSubmit(handleLogin)} className="card-body">
               <div className="form-control">
                 <label htmlFor="email" className="label">
@@ -113,9 +123,8 @@ const Login = () => {
                   id="email"
                   {...register('email', { required: true })}
                   placeholder="Email"
-                  className={`input input-bordered ${
-                    errors.email ? 'input-error' : ''
-                  }`}
+                  className={`input input-bordered ${errors.email ? 'input-error' : ''
+                    }`}
                 />
                 {errors.email && (
                   <span className="text-xs text-error">Email is required.</span>
@@ -131,9 +140,8 @@ const Login = () => {
                     id="password"
                     {...register('password', { required: true })}
                     placeholder="Password"
-                    className={`input input-bordered ${
-                      errors.password ? 'input-error' : ''
-                    }`}
+                    className={`input input-bordered ${errors.password ? 'input-error' : ''
+                      }`}
                   />
                   <div
                     className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
@@ -167,9 +175,9 @@ const Login = () => {
                 </button>
               </div>
             </form>
-            <p>
+            <p className='p-5 mx-auto'>
               ---------<small>
-                New Here? <Link to="/register">Create an account</Link>
+                New Here? <Link to="/register" className='underline underline-offset-2 text-primary'>Create an account</Link>
               </small>
               ----------
             </p>

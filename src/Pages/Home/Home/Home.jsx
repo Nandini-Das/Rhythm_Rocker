@@ -56,7 +56,7 @@ const Home = () => {
 <PopularInstructor></PopularInstructor>
 <PoplarClasses></PoplarClasses>
 <TestimonialSection></TestimonialSection>
-{/* todo-extra section */}
+
 
 
  </div>
