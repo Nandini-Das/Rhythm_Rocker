@@ -9,11 +9,20 @@ const PaymentHistory = () => {
     const [axiosSecure] = useAxiosSecure();
 
     const [enrolledClasses, setEnrolledClasses] = useState([]);
-    useEffect(()=>{
-        axiosSecure.get("/payment").then((res) => {
-            setEnrolledClasses(res.data);
-          }); 
-    }, [])
+    useEffect(() => {
+      axiosSecure.get("/payment").then((res) => {
+        const sortedClasses = res.data.sort((a, b) => {
+          // Convert the date strings to Date objects for comparison
+          const dateA = new Date(a.date);
+          const dateB = new Date(b.date);
+    
+          // Sort in descending order based on the transaction date
+          return dateB - dateA;
+        });
+    
+        setEnrolledClasses(sortedClasses);
+      });
+    }, []);
     return (
         <div>
         <h1 className="text-2xl font-bold mb-4">My Enrolled Classes</h1>

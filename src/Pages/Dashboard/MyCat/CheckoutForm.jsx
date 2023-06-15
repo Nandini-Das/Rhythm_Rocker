@@ -100,7 +100,7 @@ const CheckoutForm = ({ name, price }) => {
                     .then((res) => {
                       console.log(res.data);
                       // Remove the item from the cart
-                      axiosSecure.delete(`/cart/${id}`, { data: cart })
+                      axiosSecure.delete(`/carts/${id}`, { data: cart })
                         .then((res) => {
                           console.log(res.data);
                           refetch();
