@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const MySelectedClass = () => {
     const [cart, refetch] = useCart();
 
-    const total = cart.reduce((sum, item) => item.price + sum, 0);
+   
 
     const handleDelete = item => {
         Swal.fire({
@@ -69,7 +69,7 @@ const MySelectedClass = () => {
                                 <td>
                                     <div className="avatar">
                                         <div className="mask mask-squircle w-12 h-12">
-                                            <img src={item.image} alt="Avatar Tailwind CSS Component" />
+                                            <img src={item.image} alt={item.name}/>
                                         </div>
                                     </div>
                                 </td>

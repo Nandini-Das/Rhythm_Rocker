@@ -77,27 +77,37 @@ const CheckoutForm = ({ name, price }) => {
         console.log('payment intent', paymentIntent)
         setProcessing(false)
         if (paymentIntent.status === 'succeeded') {
-            setTransactionId(paymentIntent.id);
-            // save payment information to the server
-            const payment = {
+            setProcessing(false);
+            if (paymentIntent.status === 'succeeded') {
+              setTransactionId(paymentIntent.id);
+              // Save payment information to the server
+              const payment = {
                 email: user?.email,
                 transactionId: paymentIntent.id,
                 price,
                 date: new Date(),
                 class_name: name,
                 status: 'service pending',
-               
-            }
-            axiosSecure.post('/payment', payment)
-                .then(res => {
-                    console.log(res.data);
-                    
-                })
-                axiosSecure.delete(`/cart/${id}`, { data: cart })
-                .then(res => {
+              };
+              
+              axiosSecure.post('/payment', payment)
+                .then((res) => {
                   console.log(res.data);
-                  refetch(); 
-                })
+            
+                  // Update the available seats for the class
+                  const updatedSeats = courseItem.available_seats - 1;
+                  axiosSecure.patch(`/classes/${courseItem._id}`, { available_seats: updatedSeats })
+                    .then((res) => {
+                      console.log(res.data);
+                      // Remove the item from the cart
+                      axiosSecure.delete(`/cart/${id}`, { data: cart })
+                        .then((res) => {
+                          console.log(res.data);
+                          refetch();
+                        });
+                    });
+                });
+            }
 
         }
 

@@ -12,7 +12,7 @@ import Secret from "../Pages/Secret";
 
 import Instructor from "../Pages/Home/Instructor";
 
-import ClassLoader from "../Pages/Home/ClassLoader";
+
 import Dashboard from "../Layout/Dashboard";
 import MySelectedClass from "../Pages/Dashboard/MyCat/MySelectedClass";
 import AllUsers from "../Pages/Dashboard/AllUsers";
@@ -26,6 +26,8 @@ import MyEnrooledClasses from "../Pages/Dashboard/MyEnrooledClasses";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory";
 import StudentRoute from "./StudentRoute";
 import ManageClasses from "../Pages/Dashboard/ManageClassses";
+import Courses from "../Pages/Home/Courses";
+import DashBoardHome from "../Pages/DashBoardHome";
 
 
 
@@ -50,7 +52,7 @@ export const router = createBrowserRouter([
        },
        {
         path: "/classes",
-        element:<ClassLoader></ClassLoader>,
+        element:<Courses></Courses>,
        },
        {
         path: "/instructors",
@@ -67,10 +69,16 @@ export const router = createBrowserRouter([
       element:<Dashboard></Dashboard>,
 
       children:[
+        
+        {
+          path: "home",
+          element:<DashBoardHome></DashBoardHome>,
+    
+        },
 
         {
           path: "myCart",
-          element:<StudentRoute><MySelectedClass></MySelectedClass></StudentRoute>,
+          element:<MySelectedClass></MySelectedClass>,
     
         },
         {
@@ -85,7 +93,7 @@ export const router = createBrowserRouter([
         },
         {
           path: "payment/:id",
-          element:<StudentRoute><Payment></Payment></StudentRoute>,
+          element:<Payment></Payment>,
           loader: ({params}) => fetch(`/http://localhost:5173/classes/${params.id}`),
         },
         {
@@ -103,12 +111,12 @@ export const router = createBrowserRouter([
         },
         {
           path: 'myEnrolledClasses',
-          element: <StudentRoute><MyEnrooledClasses></MyEnrooledClasses></StudentRoute>,
+          element:<MyEnrooledClasses></MyEnrooledClasses>,
           
         },   
         {
           path: 'myPayment',
-          element: <StudentRoute><PaymentHistory></PaymentHistory></StudentRoute>,
+          element:<PaymentHistory></PaymentHistory>,
           
         },
       

@@ -15,7 +15,7 @@ const AddClasses = () => {
   const onSubmit = async (data) => {
     try {
       const newItem = {
-        class_name: data.class_name,
+        course_name: data.class_name,
         class_image: data.class_image,
         available_seats: data.available_seats,
         enrolled_students: data.enrolled_students,

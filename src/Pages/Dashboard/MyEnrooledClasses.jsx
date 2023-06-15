@@ -3,8 +3,10 @@ import { useEffect } from 'react';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import { useState } from 'react';
 
+
 const MyEnrooledClasses = () => {
     const [axiosSecure] = useAxiosSecure();
+    
 
     const [enrolledClasses, setEnrolledClasses] = useState([]);
     useEffect(()=>{
@@ -25,7 +27,8 @@ const MyEnrooledClasses = () => {
                 <th>#</th>
                 <th>Class Name</th>
                 <th>Price</th>
-                <th>Status</th>
+                <th>Enroll Date</th>
+                
               </tr>
             </thead>
             <tbody>
@@ -34,6 +37,7 @@ const MyEnrooledClasses = () => {
                     <td>{index+1}</td>
                   <td className='ms-1.5'>{enrolledClass.class_name}</td>
                   <td>{enrolledClass.price}</td>
+                  <td>{enrolledClass.date}</td>
                   
                 </tr>
               ))}
