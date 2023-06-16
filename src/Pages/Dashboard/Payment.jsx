@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import CheckoutForm from "./MyCat/CheckoutForm";
 import useCart from "../../hooks/useCart";
 
-// TODO: provide publishable Key
+
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
 
 const Payment = () => {
