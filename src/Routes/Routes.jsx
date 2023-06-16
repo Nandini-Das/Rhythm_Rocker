@@ -103,17 +103,17 @@ export const router = createBrowserRouter([
         },
         {
           path: 'updateClass/:id',
-          element: <UpdateClass></UpdateClass>,
+          element:<PrivateRoute><UpdateClass></UpdateClass>,</PrivateRoute>
          
         },
         {
           path: 'myEnrolledClasses',
-          element:<MyEnrooledClasses></MyEnrooledClasses>,
+          element:<PrivateRoute><MyEnrooledClasses></MyEnrooledClasses></PrivateRoute>,
           
         },   
         {
           path: 'myPayment',
-          element:<PaymentHistory></PaymentHistory>,
+          element:<PrivateRoute><PaymentHistory></PaymentHistory></PrivateRoute>,
           
         },
       
