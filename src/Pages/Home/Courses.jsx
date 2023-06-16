@@ -2,6 +2,9 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import useCart from "../../hooks/useCart";
 import { useLocation, useNavigate } from "react-router-dom";
+import useAdmin from "../../hooks/useAdmin";
+import useInstructor from "../../hooks/useInstructor";
+import useStudent from "../../hooks/useStudent";
 
 const Courses = () => {
   const { user } = useContext(AuthContext);
@@ -9,7 +12,7 @@ const Courses = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [courses, setCourses] = useState([]);
-
+ 
   useEffect(() => {
     fetch('https://assignment-12-server-side-nandini-das.vercel.app/classes')
       .then(res => res.json())
@@ -60,7 +63,7 @@ const Courses = () => {
         <li
           key={courseItem._id}
           className={`flex flex-col items-center justify-center p-4 border rounded-lg ${
-            courseItem.available_seats == 0 && (isAdmin && isInstructor) ? 'bg-red-200' : ''
+            courseItem.available_seats == 0  ? 'bg-red-200' : ''
           }`}
         >
             <img
@@ -74,7 +77,7 @@ const Courses = () => {
             <p className="text-gray-500">Price: {courseItem.price}</p>
             <button
               className="btn btn-primary mt-4"
-              disabled={courseItem.available_seats === 0}
+              disabled={courseItem.available_seats == 0}
               onClick={() => handleSelectClass(courseItem)}
             >
               ENROLL

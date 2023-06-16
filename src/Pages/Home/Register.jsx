@@ -17,7 +17,9 @@ const Register = () => {
                 console.log(loggedUser);
                 updateUserProfile(data.name, data.photoURL)
                 .then(() => {
-                    const saveUser = { name: data.name, email: data.email }
+                    const saveUser = { name: data.name,
+                                       email: data.email, 
+                                       role:'student'}
                     fetch('https://assignment-12-server-side-nandini-das.vercel.app/users', {
                         method: 'POST',
                         headers: {
