@@ -13,7 +13,7 @@
 * You can register in this website
 * You can login with email-password, google.
 * Use this site and feel the music power
-
+* React Fade used
 
 
 ### Live site Link : [https://assignment-12-5e090.web.app//](https://assignment-12-5e090.web.app/)
