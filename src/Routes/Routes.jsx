@@ -8,7 +8,7 @@ import ErrorPage from "../Pages/ErrorPage";
 import Login from "../Pages/Home/Home/Login";
 import Register from "../Pages/Home/Register";
 import PrivateRoute from "./PrivateRoute";
-import Secret from "../Pages/Secret";
+
 
 import Instructor from "../Pages/Home/Instructor";
 
