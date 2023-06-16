@@ -10,7 +10,7 @@ const MyAddedClasses = () => {
   useEffect(() => {
     const fetchClasses = async () => {
         try {
-          const response = await fetch(`http://localhost:5000/classes`);
+          const response = await fetch(`https://assignment-12-server-side-nandini-das.vercel.app/classes`);
           const data = await response.json();
           const filteredClasses = data.filter((classItem) => classItem.email === user.email);
           setClasses(filteredClasses);

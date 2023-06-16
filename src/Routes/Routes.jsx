@@ -58,10 +58,7 @@ export const router = createBrowserRouter([
         path: "/instructors",
         element:<Instructor></Instructor>
        },
-       {
-        path: "/secret",
-        element:<PrivateRoute><Secret></Secret></PrivateRoute>,
-       },
+       
       ]
     },
     {
@@ -88,7 +85,7 @@ export const router = createBrowserRouter([
         },
         {
           path: "manageClasses",
-          element:<AdminRoute><ManageClasses></ManageClasses></AdminRoute>
+          element:<ManageClasses></ManageClasses>
     
         },
         {

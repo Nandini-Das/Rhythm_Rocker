@@ -13,7 +13,7 @@ const useAxiosSecure = () => {
   const navigate = useNavigate(); 
 
   const axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000', 
+    baseURL: 'https://assignment-12-server-side-nandini-das.vercel.app', 
   });
 
   useEffect(() => {

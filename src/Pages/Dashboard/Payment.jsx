@@ -17,7 +17,7 @@ console.log(id)
   useEffect(() => {
     const fetchClassData = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/classes/${id}`);
+        const response = await fetch(`https://assignment-12-server-side-nandini-das.vercel.app/classes/${id}`);
         if (response.ok) {
           const data = await response.json();
           setClassData(data);

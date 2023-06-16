@@ -1,7 +1,6 @@
 import React from 'react';
-import Anime, { anime } from 'react-anime';
 import Marquee from 'react-fast-marquee';
-
+import { Fade } from "react-awesome-reveal";
 const TestimonialSection = () => {
   const colors = ['blue', 'green', 'red'];
   const testimonials = [
@@ -61,21 +60,14 @@ const TestimonialSection = () => {
   return (
     <section className="py-16">
       <div className="max-w-4xl mx-auto px-4">
-        <Anime delay={anime.stagger(100)} scale={[0.1, 0.9]}>
-          <div>
-            <h2 className="text-3xl font-bold text-center mb-8">Testimonials</h2>
-          </div>
-        </Anime>
+        <Fade>
+          <h1 className="text-center py-2 decoration-rose-900 font-bold text-xl mt-3">Testimonials</h1>
+        </Fade>
+      
 
         <Marquee gradient={false} speed={30}>
           {testimonials.map((testimonial, index) => (
-            <Anime
-              key={testimonial.id}
-              delay={anime.stagger(100)}
-              opacity={[0, 1]}
-              translateY={[-30, 0]}
-              backgroundColor={colors[index % colors.length]}
-            >
+            
               <div className="card shadow-lg w-72 h-96 mx-4 my-4 p-6 rounded-lg">
                 <img
                   src={testimonial.image}
@@ -86,7 +78,7 @@ const TestimonialSection = () => {
                 <p className="text-gray-400 mb-4">{testimonial.instrument}</p>
                 <p className="text-gray-600">{testimonial.content}</p>
               </div>
-            </Anime>
+          
           ))}
         </Marquee>
       </div>

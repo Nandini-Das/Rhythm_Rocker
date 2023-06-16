@@ -1,32 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { FaTrashAlt} from 'react-icons/fa';
-import  'react-toastify/dist/ReactToastify.css';
+import { FaTrashAlt } from 'react-icons/fa';
+import 'react-toastify/dist/ReactToastify.css';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const AllUsers = () => {
-    const [axiosSecure] = useAxiosSecure();
+  const [axiosSecure] = useAxiosSecure();
+  const [disabledButtons, setDisabledButtons] = useState([]);
 
-    const { data: users = [], refetch } = useQuery(['users'], async () => {
-        const res = await axiosSecure.get('/users')
-        return res.data;
+  const { data: users = [], refetch } = useQuery(['users'], async () => {
+    const res = await axiosSecure.get('/users');
+    return res.data;
   });
 
   const handleMakeAdmin = (user) => {
     const role = 'admin';
-    disabled = true; // Disable the button
 
-    fetch(`http://localhost:5000/users/admin${user._id}`, {
-      method: 'PATCH',
-      body: JSON.stringify({ role }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) {
+    // Disable the button
+    setDisabledButtons((prevDisabledButtons) => [
+      ...prevDisabledButtons,
+      user._id,
+    ]);
+
+    axiosSecure
+      .patch(`/users/admin/${user._id}`, { role })
+      .then((res) => {
+        if (res.data.success) {
           refetch();
           Swal.fire({
             position: 'top-end',
@@ -36,23 +36,25 @@ const AllUsers = () => {
             timer: 1500,
           });
         }
+      })
+      .catch((error) => {
+        console.error('Failed to make user an admin:', error);
       });
   };
 
   const handleMakeInstructor = (user) => {
     const role = 'instructor';
-    disabled = true; // Disable the button
 
-    fetch(`http://localhost:5000/users/instructor${user._id}`, {
-      method: 'PATCH',
-      body: JSON.stringify({ role }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) {
+    // Disable the button
+    setDisabledButtons((prevDisabledButtons) => [
+      ...prevDisabledButtons,
+      user._id,
+    ]);
+
+    axiosSecure
+      .patch(`/users/instructor/${user._id}`, { role })
+      .then((res) => {
+        if (res.data.success) {
           refetch();
           Swal.fire({
             position: 'top-end',
@@ -62,8 +64,12 @@ const AllUsers = () => {
             timer: 1500,
           });
         }
+      })
+      .catch((error) => {
+        console.error('Failed to make user an instructor:', error);
       });
   };
+
   const handleDelete = (user) => {
     Swal.fire({
       title: 'Are you sure to delete?',
@@ -74,15 +80,16 @@ const AllUsers = () => {
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/users/${user._id}`, {
-          method: 'DELETE',
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.deletedCount > 0) {
+        axiosSecure
+          .delete(`/users/${user._id}`)
+          .then((res) => {
+            if (res.data.deletedCount > 0) {
               refetch();
               Swal.fire('Deleted!', 'User has been deleted.', 'success');
             }
+          })
+          .catch((error) => {
+            console.error('Failed to delete user:', error);
           });
       }
     });
@@ -110,29 +117,30 @@ const AllUsers = () => {
                 <td>{user.email}</td>
                 <td>{user.role}</td>
                 <td>
-                  {user.role === 'admin' ? 
+                  
                     <>
                       <button
                         onClick={() => handleMakeAdmin(user)}
-                     
+                        disabled={disabledButtons.includes(user._id)}
                         className="btn btn-ghost bg-orange-600 text-white"
                       >
                         Make Admin
                       </button>
                       <button
                         onClick={() => handleMakeInstructor(user)}
-                    
+                        disabled={disabledButtons.includes(user._id)}
                         className="btn btn-ghost bg-orange-600 text-white"
                       >
                         Make Instructor
                       </button>
                     </>
-                  : " "}
+                
                 </td>
                 <td>
                   <button
                     onClick={() => handleDelete(user)}
                     className="btn btn-ghost bg-red-600 text-white"
+                    
                   >
                     <FaTrashAlt />
                   </button>

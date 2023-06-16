@@ -31,88 +31,88 @@ const CheckoutForm = ({ name, price }) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
+      
         if (!stripe || !elements) {
-            return
+          return;
         }
-
+      
         const card = elements.getElement(CardElement);
         if (card === null) {
-            return
+          return;
         }
-
+      
         const { error } = await stripe.createPaymentMethod({
-            type: 'card',
-            card
-        })
-
+          type: 'card',
+          card,
+        });
+      
         if (error) {
-            console.log('error', error)
-            setCardError(error.message);
+          console.log('error', error);
+          setCardError(error.message);
+        } else {
+          setCardError('');
         }
-        else {
-            setCardError('');
-            // console.log('payment method', paymentMethod)
-        }
-
-        setProcessing(true)
-
-        const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
-            clientSecret,
-            {
-                payment_method: {
-                    card: card,
-                    billing_details: {
-                        email: user?.email || 'unknown',
-                        name: user?.displayName || 'anonymous'
-                    },
-                },
+      
+        setProcessing(true);
+      
+        const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(clientSecret, {
+          payment_method: {
+            card: card,
+            billing_details: {
+              email: user?.email || 'unknown',
+              name: user?.displayName || 'anonymous',
             },
-        );
-
+          },
+        });
+      
         if (confirmError) {
-            console.log(confirmError);
+          console.log(confirmError);
+          setProcessing(false);
+          return;
         }
-
-        console.log('payment intent', paymentIntent)
-        setProcessing(false)
+      
         if (paymentIntent.status === 'succeeded') {
-            setProcessing(false);
-            if (paymentIntent.status === 'succeeded') {
-              setTransactionId(paymentIntent.id);
-              // Save payment information to the server
-              const payment = {
-                email: user?.email,
-                transactionId: paymentIntent.id,
-                price,
-                date: new Date(),
-                class_name: name,
-                status: 'service pending',
-              };
-              
-              axiosSecure.post('/payment', payment)
-                .then((res) => {
-                  console.log(res.data);
-            
-                  // Update the available seats for the class
-                  const updatedSeats = courseItem.available_seats - 1;
-                  axiosSecure.patch(`/classes/${courseItem._id}`, { available_seats: updatedSeats })
-                    .then((res) => {
-                      console.log(res.data);
-                      // Remove the item from the cart
-                      axiosSecure.delete(`/carts/${id}`, { data: cart })
-                        .then((res) => {
-                          console.log(res.data);
-                          refetch();
-                        });
+          setTransactionId(paymentIntent.id);
+      
+          // Save payment information to the server
+          const payment = {
+            email: user?.email,
+            transactionId: paymentIntent.id,
+            price,
+            date: new Date(),
+            class_name: name,
+            status: 'service pending',
+          };
+      
+          axiosSecure.post('/payment', payment)
+            .then(() => {
+              // Update the available seats for the class
+              axiosSecure.patch(`/classes/${selectedClass._id}`, { availableSeats: selectedClass.availableSeats - 1 })
+                .then(() => {
+                  // Remove the item from the cart
+                  axiosSecure.delete(`/carts/${selectedClass._id}`)
+                    .then(() => {
+                      // Update the enrolled classes in the PaymentHistory component
+                      updateEnrolledClasses(selectedClass);
+                      setSelectedClass(null);
+                      refetch();
+                    })
+                    .catch((error) => {
+                      console.log('Error removing item from cart:', error);
                     });
+                })
+                .catch((error) => {
+                  console.log('Error updating available seats:', error);
                 });
-            }
-
+            })
+            .catch((error) => {
+              console.log('Error saving payment information:', error);
+            });
         }
-
-
-    }
+      
+        setProcessing(false);
+      };
+      
 
     return (
         <>

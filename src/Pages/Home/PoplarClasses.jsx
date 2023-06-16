@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { Fade } from 'react-awesome-reveal';
 
 const PoplarClasses = () => {
     const [classes, setClasses] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/classes')
+        fetch('https://assignment-12-server-side-nandini-das.vercel.app/classes')
             .then(res => res.json())
             .then(data => {
         
@@ -17,7 +18,9 @@ const PoplarClasses = () => {
           }, []);
     return (
         <div>
+        <Fade>
         <h1 className="text-center py-2 decoration-rose-900 font-bold text-xl mt-3">OUR POPULAR CLASSES</h1>
+        </Fade>
          <div className="container mx-auto">
   <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
     {classes.map((theClass, index) => (

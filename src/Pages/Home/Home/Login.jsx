@@ -67,7 +67,7 @@ const Login = () => {
       const loggedInUser = result.user;
       console.log(loggedInUser);
       const saveUser = { name: loggedInUser.displayName, email: loggedInUser.email }
-      fetch('http://localhost:5000/users', {
+      fetch('https://assignment-12-server-side-nandini-das.vercel.app/users', {
         method: 'POST',
         headers: {
           'content-type': 'application/json'

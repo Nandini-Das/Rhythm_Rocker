@@ -11,7 +11,7 @@ const ManageClasses = () => {
   useEffect(() => {
     const fetchClasses = async () => {
       try {
-        const response = await fetch('http://localhost:5000/classes');
+        const response = await fetch('https://assignment-12-server-side-nandini-das.vercel.app/classes');
         const data = await response.json();
         setClasses(data);
       } catch (error) {
@@ -37,7 +37,7 @@ const ManageClasses = () => {
     const feedback = feedbackText;
     console.log(feedback)
   
-    fetch(`http://localhost:5000/classes/${selectedClassId}`, {
+    fetch(`https://assignment-12-server-side-nandini-das.vercel.app/classes/${selectedClassId}`, {
       method: 'PATCH',
       body: JSON.stringify({ feedback }),
       headers: {
@@ -80,7 +80,7 @@ const ManageClasses = () => {
   const handleApprove = (id) => {
     const status = 'approved';
 
-    fetch(`http://localhost:5000/classes/${id}`, {
+    fetch(`https://assignment-12-server-side-nandini-das.vercel.app/classes/${id}`, {
       method: 'PATCH',
       body: JSON.stringify({ status }),
       headers: {
@@ -110,7 +110,7 @@ const ManageClasses = () => {
   const handleDeny = (id) => {
     const status = 'denied';
 
-    fetch(`http://localhost:5000/classes/${id}`, {
+    fetch(`https://assignment-12-server-side-nandini-das.vercel.app/classes/${id}`, {
       method: 'PATCH',
       body: JSON.stringify({ status }),
       headers: {
