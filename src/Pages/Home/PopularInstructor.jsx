@@ -10,7 +10,7 @@ const PopularInstructor = () => {
         .then(data => {
         
           const sortedInstructors = data.sort((a, b) => b.numClassesTaken - a.numClassesTaken);
-          // Select the top 6 instructors
+         
           const topInstructors = sortedInstructors.slice(0, 6);
           setInstructors(topInstructors);
         })
